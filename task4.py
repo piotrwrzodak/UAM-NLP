@@ -11,7 +11,7 @@ def cipher_letter():
             letter_ciphered = open("letter_ciphered.txt", "x")
         for line in letter:
             if line_number % 3 == 0 or re.search('kocham', line, re.I):
-                letter_ciphered.write('*' * len(line) + '\n')
+                letter_ciphered.write('*' * (len(line) - 1) + '\n')
             else:
                 letter_ciphered.write(line)
             line_number += 1
