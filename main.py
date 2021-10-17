@@ -1,7 +1,7 @@
-from task1.task1 import calculate_budget
-from task2 import task2
-from task3 import task3
-from task4 import cipher_letter
+from A.task1.task1 import calculate_budget
+from A.task2 import task2
+from A.task3 import task3
+from A.task4 import cipher_letter
 
 if __name__ == '__main__':
     print('Task A01')

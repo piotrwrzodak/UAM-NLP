@@ -1,10 +1,10 @@
 from datetime import datetime
-from task1.accounting import *
+from A.task1.accounting import *
 import csv
 
 
 def parse_employees_salary():
-    with open("task1/csv_data/employee.csv", 'r') as employee_file:
+    with open("A/task1/csv_data/employee.csv", 'r') as employee_file:
         csv_reader = csv.reader(employee_file)
         # skip header
         next(csv_reader)
@@ -15,7 +15,7 @@ def parse_employees_salary():
 
 
 def parse_issued_invoice():
-    with open("task1/csv_data/issued_invoice.csv", 'r') as issued_invoice_file:
+    with open("A/task1/csv_data/issued_invoice.csv", 'r') as issued_invoice_file:
         csv_reader = csv.reader(issued_invoice_file)
         # skip header
         next(csv_reader)
@@ -26,7 +26,7 @@ def parse_issued_invoice():
 
 
 def parse_received_invoice():
-    with open("task1/csv_data/received_invoice.csv", 'r') as received_invoice_file:
+    with open("A/task1/csv_data/received_invoice.csv", 'r') as received_invoice_file:
         csv_reader = csv.reader(received_invoice_file)
         # skip header
         next(csv_reader)
