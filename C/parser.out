@@ -1,0 +1,172 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> command
+Rule 1     command -> OPERATE NUMBER article
+Rule 2     command -> QUESTION_HOW QUESTION_MANY article
+Rule 3     article -> attribute article
+Rule 4     attribute -> COLOR
+Rule 5     attribute -> MATERIAL
+Rule 6     attribute -> SIZE
+Rule 7     article -> KIND
+
+Terminals, with rules where they appear
+
+COLOR                : 4
+KIND                 : 7
+MATERIAL             : 5
+NUMBER               : 1
+OPERATE              : 1
+QUESTION_HOW         : 2
+QUESTION_MANY        : 2
+SIZE                 : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+article              : 1 2 3
+attribute            : 3
+command              : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . command
+    (1) command -> . OPERATE NUMBER article
+    (2) command -> . QUESTION_HOW QUESTION_MANY article
+
+    OPERATE         shift and go to state 2
+    QUESTION_HOW    shift and go to state 3
+
+    command                        shift and go to state 1
+
+state 1
+
+    (0) S' -> command .
+
+
+
+state 2
+
+    (1) command -> OPERATE . NUMBER article
+
+    NUMBER          shift and go to state 4
+
+
+state 3
+
+    (2) command -> QUESTION_HOW . QUESTION_MANY article
+
+    QUESTION_MANY   shift and go to state 5
+
+
+state 4
+
+    (1) command -> OPERATE NUMBER . article
+    (3) article -> . attribute article
+    (7) article -> . KIND
+    (4) attribute -> . COLOR
+    (5) attribute -> . MATERIAL
+    (6) attribute -> . SIZE
+
+    KIND            shift and go to state 8
+    COLOR           shift and go to state 9
+    MATERIAL        shift and go to state 10
+    SIZE            shift and go to state 11
+
+    article                        shift and go to state 6
+    attribute                      shift and go to state 7
+
+state 5
+
+    (2) command -> QUESTION_HOW QUESTION_MANY . article
+    (3) article -> . attribute article
+    (7) article -> . KIND
+    (4) attribute -> . COLOR
+    (5) attribute -> . MATERIAL
+    (6) attribute -> . SIZE
+
+    KIND            shift and go to state 8
+    COLOR           shift and go to state 9
+    MATERIAL        shift and go to state 10
+    SIZE            shift and go to state 11
+
+    article                        shift and go to state 12
+    attribute                      shift and go to state 7
+
+state 6
+
+    (1) command -> OPERATE NUMBER article .
+
+    $end            reduce using rule 1 (command -> OPERATE NUMBER article .)
+
+
+state 7
+
+    (3) article -> attribute . article
+    (3) article -> . attribute article
+    (7) article -> . KIND
+    (4) attribute -> . COLOR
+    (5) attribute -> . MATERIAL
+    (6) attribute -> . SIZE
+
+    KIND            shift and go to state 8
+    COLOR           shift and go to state 9
+    MATERIAL        shift and go to state 10
+    SIZE            shift and go to state 11
+
+    attribute                      shift and go to state 7
+    article                        shift and go to state 13
+
+state 8
+
+    (7) article -> KIND .
+
+    $end            reduce using rule 7 (article -> KIND .)
+
+
+state 9
+
+    (4) attribute -> COLOR .
+
+    KIND            reduce using rule 4 (attribute -> COLOR .)
+    COLOR           reduce using rule 4 (attribute -> COLOR .)
+    MATERIAL        reduce using rule 4 (attribute -> COLOR .)
+    SIZE            reduce using rule 4 (attribute -> COLOR .)
+
+
+state 10
+
+    (5) attribute -> MATERIAL .
+
+    KIND            reduce using rule 5 (attribute -> MATERIAL .)
+    COLOR           reduce using rule 5 (attribute -> MATERIAL .)
+    MATERIAL        reduce using rule 5 (attribute -> MATERIAL .)
+    SIZE            reduce using rule 5 (attribute -> MATERIAL .)
+
+
+state 11
+
+    (6) attribute -> SIZE .
+
+    KIND            reduce using rule 6 (attribute -> SIZE .)
+    COLOR           reduce using rule 6 (attribute -> SIZE .)
+    MATERIAL        reduce using rule 6 (attribute -> SIZE .)
+    SIZE            reduce using rule 6 (attribute -> SIZE .)
+
+
+state 12
+
+    (2) command -> QUESTION_HOW QUESTION_MANY article .
+
+    $end            reduce using rule 2 (command -> QUESTION_HOW QUESTION_MANY article .)
+
+
+state 13
+
+    (3) article -> attribute article .
+
+    $end            reduce using rule 3 (article -> attribute article .)
+
