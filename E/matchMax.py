@@ -12,24 +12,26 @@ def createDictionary():
     return dictionary
 
 
-def max_match(sentence, dictionary):
+def max_match(sentence, dictionary, word_list):
     if re.search(r"\s", sentence):
         return "sentence should not have whitespaces"
     if sentence == '':
-        return []
+        return word_list
 
     for i in range(len(sentence) - 1, -1, -1):
         first_word = sentence[0: i + 1]
         remainder = sentence[i + 1: len(sentence)]
 
         if first_word in dictionary:
-            return first_word, max_match(remainder, dictionary)
+            word_list.append(first_word)
+            return max_match(remainder, dictionary, word_list)
 
     first_word = sentence[0]
     remainder = sentence[1:]
-    return first_word, max_match(remainder, dictionary)
+    word_list.append(first_word)
+    return max_match(remainder, dictionary, word_list)
 
 
 if __name__ == '__main__':
     dictionary = createDictionary()
-    print(max_match("alamakota", dictionary))
+    print(max_match("alamakota", dictionary, []))
