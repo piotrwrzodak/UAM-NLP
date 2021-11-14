@@ -1,15 +1,19 @@
+import os.path
 import re
 import gzip
 
 
 def createDictionary():
     dictionary = set()
-    with gzip.open('PoliMorf-0.6.7.tab.gz', 'rb') as f:
-        for i in f:
-            m = re.match("([A-Za-z]+)", i.decode("utf-8"))
-            if m:
-                dictionary.add(m.group(0))
-    return dictionary
+    if os.path.exists('PoliMorf-0.6.7.tab.gz'):
+        with gzip.open('PoliMorf-0.6.7.tab.gz', 'rb') as f:
+            for i in f:
+                m = re.match("([A-Za-z]+)", i.decode("utf-8"))
+                if m:
+                    dictionary.add(m.group(0))
+        return True, dictionary
+    else:
+        return False, "Can't find PoliMorf. Download it from http://zil.ipipan.waw.pl/PoliMorf"
 
 
 def max_match(sentence, dictionary, word_list):
@@ -33,5 +37,8 @@ def max_match(sentence, dictionary, word_list):
 
 
 if __name__ == '__main__':
-    dictionary = createDictionary()
-    print(max_match("alamakota", dictionary, []))
+    success, dictionary = createDictionary()
+    if success:
+        print(max_match("alamakota", dictionary, []))
+    else:
+        print(dictionary)
