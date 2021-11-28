@@ -5,8 +5,8 @@ import gzip
 
 def createDictionary():
     dictionary = set()
-    if os.path.exists('PoliMorf-0.6.7.tab.gz'):
-        with gzip.open('PoliMorf-0.6.7.tab.gz', 'rb') as f:
+    if os.path.exists('../PoliMorf-0.6.7.tab.gz'):
+        with gzip.open('../PoliMorf-0.6.7.tab.gz', 'rb') as f:
             for i in f:
                 m = re.match("([A-Za-z]+)", i.decode("utf-8"))
                 if m:
